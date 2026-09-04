@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as LogsRouteImport } from './routes/logs'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as SimulatorRouteImport } from './routes/simulator'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const RulesRoute = RulesRouteImport.update({
   path: '/rules',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SimulatorRoute = SimulatorRouteImport.update({
   id: '/simulator',
   path: '/simulator',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof AlertsRoute
   '/logs': typeof LogsRoute
   '/rules': typeof RulesRoute
+  '/search': typeof SearchRoute
   '/simulator': typeof SimulatorRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof AlertsRoute
   '/logs': typeof LogsRoute
   '/rules': typeof RulesRoute
+  '/search': typeof SearchRoute
   '/simulator': typeof SimulatorRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,16 @@ export interface FileRoutesById {
   '/alerts': typeof AlertsRoute
   '/logs': typeof LogsRoute
   '/rules': typeof RulesRoute
+  '/search': typeof SearchRoute
   '/simulator': typeof SimulatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/alerts' | '/logs' | '/rules' | '/simulator'
+  fullPaths: '/' | '/alerts' | '/logs' | '/rules' | '/search' | '/simulator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/alerts' | '/logs' | '/rules' | '/simulator'
-  id: '__root__' | '/' | '/alerts' | '/logs' | '/rules' | '/simulator'
+  to: '/' | '/alerts' | '/logs' | '/rules' | '/search' | '/simulator'
+  id:
+    '__root__' | '/' | '/alerts' | '/logs' | '/rules' | '/search' | '/simulator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +86,7 @@ export interface RootRouteChildren {
   AlertsRoute: typeof AlertsRoute
   LogsRoute: typeof LogsRoute
   RulesRoute: typeof RulesRoute
+  SearchRoute: typeof SearchRoute
   SimulatorRoute: typeof SimulatorRoute
 }
 
@@ -109,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RulesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/simulator': {
       id: '/simulator'
       path: '/simulator'
@@ -124,6 +142,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlertsRoute: AlertsRoute,
   LogsRoute: LogsRoute,
   RulesRoute: RulesRoute,
+  SearchRoute: SearchRoute,
   SimulatorRoute: SimulatorRoute,
 }
 export const routeTree = rootRouteImport
