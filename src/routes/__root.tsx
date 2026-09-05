@@ -171,7 +171,7 @@ function Chrome({ children }: { children: ReactNode }) {
             >
               <Icon className="size-4" />
               {label}
-              {to === "/alerts" && critical > 0 && (
+              {to === "/alerts" && mounted && critical > 0 && (
                 <span className="ml-auto rounded-full bg-critical/20 px-1.5 font-mono text-[10px] text-critical">
                   {critical}
                 </span>
