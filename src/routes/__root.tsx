@@ -206,10 +206,10 @@ function Chrome({ children }: { children: ReactNode }) {
               {paused ? "INGEST PAUSED" : "INGEST LIVE"}
             </span>
             <span className="text-muted-foreground">
-              EPS <span className="text-primary">{eps.toLocaleString()}</span>
+              EPS <span className="text-primary">{mounted ? eps.toLocaleString() : "—"}</span>
             </span>
             <span className="text-muted-foreground">
-              CRIT <span className="text-critical">{critical}</span>
+              CRIT <span className="text-critical">{mounted ? critical : "—"}</span>
             </span>
           </div>
         </header>
