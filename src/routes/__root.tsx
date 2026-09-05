@@ -181,7 +181,7 @@ function Chrome({ children }: { children: ReactNode }) {
         </nav>
         <div className="border-t border-border p-4 font-mono text-[10px] text-muted-foreground">
           <p>SOC-1 · TIER 2 ANALYST</p>
-          <p className="mt-1 text-primary">a.patel@cybershield.io</p>
+          <p className="mt-1 text-primary">ashirwadkkr.6251@gmail.com</p>
         </div>
       </aside>
 
