@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   Activity,
   AlertTriangle,
@@ -142,6 +142,8 @@ const NAV = [
 function Chrome({ children }: { children: ReactNode }) {
   const { eps, paused, alerts } = useSiem();
   const critical = alerts.filter((a) => a.severity === "CRITICAL" && a.status !== "Closed").length;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <div className="flex min-h-screen">
@@ -169,7 +171,7 @@ function Chrome({ children }: { children: ReactNode }) {
             >
               <Icon className="size-4" />
               {label}
-              {to === "/alerts" && critical > 0 && (
+              {to === "/alerts" && mounted && critical > 0 && (
                 <span className="ml-auto rounded-full bg-critical/20 px-1.5 font-mono text-[10px] text-critical">
                   {critical}
                 </span>
@@ -204,10 +206,10 @@ function Chrome({ children }: { children: ReactNode }) {
               {paused ? "INGEST PAUSED" : "INGEST LIVE"}
             </span>
             <span className="text-muted-foreground">
-              EPS <span className="text-primary">{eps.toLocaleString()}</span>
+              EPS <span className="text-primary">{mounted ? eps.toLocaleString() : "—"}</span>
             </span>
             <span className="text-muted-foreground">
-              CRIT <span className="text-critical">{critical}</span>
+              CRIT <span className="text-critical">{mounted ? critical : "—"}</span>
             </span>
           </div>
         </header>
