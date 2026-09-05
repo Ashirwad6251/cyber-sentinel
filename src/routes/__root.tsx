@@ -142,6 +142,8 @@ const NAV = [
 function Chrome({ children }: { children: ReactNode }) {
   const { eps, paused, alerts } = useSiem();
   const critical = alerts.filter((a) => a.severity === "CRITICAL" && a.status !== "Closed").length;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <div className="flex min-h-screen">
