@@ -70,15 +70,7 @@ Build a full-stack enterprise SIEM (Security Information & Event Management) app
 
 - Automatically run a light background interval generating 2-3 benign logs every 5 seconds.
 
-This project was built with [Lovable](https://lovable.dev).
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5bea9566-e3da-48cf-9211-fb372257870a).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
